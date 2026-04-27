@@ -150,7 +150,7 @@ footer .ab{max-width:520px;margin:0 auto .8rem;font-family:'DM Sans',sans-serif;
 .search-hit h4{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--gold);margin-bottom:.2rem}
 .search-hit p{font-size:.7rem;color:var(--text-dim);line-height:1.5}
 .search-hit .sh-section{font-family:'JetBrains Mono',monospace;font-size:.5rem;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase}
-.search-trigger{position:fixed;top:3.2rem;right:1.5rem;z-index:1001;background:none;border:1px solid var(--blue-light);color:var(--blue-light);padding:.25rem .6rem;border-radius:4px;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:.55rem;font-weight:500;letter-spacing:.06em;transition:all .3s}
+.search-trigger{position:fixed;top:.7rem;right:12rem;z-index:1001;background:none;border:1px solid var(--blue-light);color:var(--blue-light);padding:.25rem .6rem;border-radius:4px;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:.65rem;font-weight:700;letter-spacing:.06em;transition:all .3s}
 .search-trigger:hover{color:var(--gold);border-color:var(--gold-dim)}
 
 /* TIMING PROTOCOL */
@@ -248,24 +248,30 @@ footer p{font-size:.55rem}
 .bio h3{font-size:1.4rem}
 .update-banner p{font-size:1rem}
 }
+@media(min-width:769px) and (max-width:1024px){.cg,.ig{grid-template-columns:repeat(2,1fr)}.timing{flex-wrap:wrap}.timing-slot{min-width:45%}.nk a{font-size:.6rem;padding:.2rem .35rem}}
 @media print{body{background:#fff;color:#111}nav,.snav,.btt,.search-trigger,.search-wrap{display:none !important}.sc,.ip,.co{break-inside:avoid;border-color:#ccc;background:#f9f9f9}.ps{opacity:1;transform:none}.hero{min-height:auto;padding:2rem}.sc::before{display:none}.banner{background:#f5f5f5;border-color:#ddd}.bq{color:#333}.bq em{color:#8a7234}details .rm{background:#f5f5f5;border-color:#ddd}img{max-width:100%}}
 </style>
 </head>
 <body>
 
-<nav id="mainNav">
+<nav id="mainNav" role="navigation" aria-label="Main navigation">
   <div class="nl">The Fusion Protocol<span>by Pedro Basto</span></div>
-  <button class="nt" onclick="document.querySelector('.nk').classList.toggle('open')">Menu</button>
+  <button class="nt" aria-label="Toggle menu" onclick="document.querySelector('.nk').classList.toggle('open')">Menu</button>
   <div class="nk">
-    <a href="#fundamentals">Fundamentals</a><a href="#lifestyle">Lifestyle</a><a href="#fasting">Fasting</a><a href="#stress">Stress</a><a href="#biomarkers">Biomarkers</a><a href="#building-blocks">Blocks</a><a href="#nutrition">Nutrition</a><a href="#gut">Gut</a><a href="#recycle">Recycle</a><a href="#nad">NAD+</a><a href="#mito">Mito</a><a href="#antioxidants">A.O.</a><a href="#cardio">Cardio</a><a href="#anti-inflammatories">Anti-Infl.</a><a href="#inflammation-vectors">Vectors</a><a href="#oils">Oils</a><a href="#neuro">Neuro</a><a href="#sexual-health">Sexual</a><a href="#magnesium">Mag</a><a href="#detox">Detox</a><a href="#organ-detox">Organs</a><a href="#mycotoxins">Mycotox</a><a href="#genotoxicity">DNA</a><a href="#teas">Teas</a><a href="#rlt">RLT</a><a href="#antidotes">Antidotes</a><a href="#coffee">Coffee</a><a href="#supplements">Supps</a><a href="#implementation">Implement</a>
+    <span style="color:var(--gold-dim);font-size:.5rem;font-family:'JetBrains Mono',monospace;letter-spacing:.08em;padding:.2rem .4rem;opacity:.6">ABOUT</span><a href="#" onclick="document.querySelector('.bio').scrollIntoView({behavior:'smooth'});return false">Pedro Basto</a>
+    <span style="color:var(--gold-dim);font-size:.5rem;font-family:'JetBrains Mono',monospace;letter-spacing:.08em;padding:.2rem .4rem;opacity:.6">FOUNDATION</span><a href="#fundamentals">Fundamentals</a><a href="#lifestyle">Lifestyle</a><a href="#fasting">Fasting</a><a href="#stress">Stress</a><a href="#biomarkers">Biomarkers</a>
+    <span style="color:var(--gold-dim);font-size:.5rem;font-family:'JetBrains Mono',monospace;letter-spacing:.08em;padding:.2rem .4rem;opacity:.6">COMPOUNDS</span><a href="#building-blocks">Blocks</a><a href="#nutrition">Nutrition</a><a href="#gut">Gut</a><a href="#recycle">Recycle</a><a href="#nad">NAD+</a><a href="#mito">Mito</a><a href="#antioxidants">A.O.</a><a href="#copper">Copper</a>
+    <span style="color:var(--gold-dim);font-size:.5rem;font-family:'JetBrains Mono',monospace;letter-spacing:.08em;padding:.2rem .4rem;opacity:.6">SYSTEMS</span><a href="#cardio">Cardio</a><a href="#anti-inflammatories">Anti-Infl.</a><a href="#inflammation-vectors">Vectors</a><a href="#oils">Oils</a><a href="#neuro">Brain</a><a href="#sexual-health">Sexual</a><a href="#magnesium">Mag</a>
+    <span style="color:var(--gold-dim);font-size:.5rem;font-family:'JetBrains Mono',monospace;letter-spacing:.08em;padding:.2rem .4rem;opacity:.6">DETOX &amp; DEFENCE</span><a href="#detox">Detox</a><a href="#organ-detox">Organs</a><a href="#mycotoxins">Mycotox</a><a href="#genotoxicity">DNA</a><a href="#teas">Teas</a><a href="#rlt">RLT</a><a href="#antidotes">Antidotes</a>
+    <span style="color:var(--gold-dim);font-size:.5rem;font-family:'JetBrains Mono',monospace;letter-spacing:.08em;padding:.2rem .4rem;opacity:.6">IMPLEMENT</span><a href="#coffee">Coffee</a><a href="#supplements">Supps</a><a href="#implementation">Protocol</a>
   </div>
 </nav>
 
 <!-- Search Trigger -->
-<button class="search-trigger" onclick="toggleSearch()" title="Search (Ctrl+K)">⌕ Search</button>
+<button class="search-trigger" aria-label="Search" onclick="toggleSearch()" title="Search (Ctrl+K)">⌕ Search</button>
 
 <!-- Search Overlay -->
-<div class="search-wrap" id="searchWrap">
+<div class="search-wrap" role="search" aria-label="Search protocol" id="searchWrap">
   <div class="search-box">
     <span class="search-icon">⌕</span>
     <input type="text" id="searchInput" placeholder="Search supplements, compounds, sections..." autocomplete="off">
@@ -278,7 +284,7 @@ footer p{font-size:.55rem}
 <div class="snav" id="sectionNav"></div>
 
 <!-- Back to Top -->
-<button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top (T)">↑</button>
+<button class="btt" aria-label="Back to top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top (T)">↑</button>
 
 <section class="hero">
   <div class="hey af d1">An unorthodox approach to longevity</div>
@@ -288,7 +294,7 @@ footer p{font-size:.55rem}
   <div class="hst af d5">
     <div class="hs"><div class="v">80%</div><div class="l">Lifestyle</div></div>
     <div class="hs"><div class="v">20%</div><div class="l">Genetics</div></div>
-    <div class="hs"><div class="v">29</div><div class="l">Pillars</div></div>
+    <div class="hs"><div class="v">30</div><div class="l">Pillars</div></div>
   </div>
   <div class="hl af d5"></div>
 </section>
@@ -738,9 +744,33 @@ footer p{font-size:.55rem}
 
 <div class="dv"><span>✦</span></div>
 
-<!-- 23 TEAS -->
+<!-- COPPER PILLAR -->
+<section class="ps c-amber" id="copper">
+  <div class="sh"><div class="sn">23</div><div class="stg"><div class="sl">The Critical Mineral Link</div><h2 class="st">Copper</h2></div></div>
+  <p class="si">Copper is arguably the most underrated and misunderstood mineral in human health. It powers over 50 copper-dependent enzymes, is essential for mitochondrial ATP production (Complex IV), and is the body's primary defence against oxidative stress via SOD (Superoxide Dismutase). Without adequate copper, the entire Fusion Protocol underperforms. Source: <em>The Copper Revolution: Healing with Minerals</em> by Jason Hommel.</p>
+
+  <div class="co"><h4>Why Copper is Central to the Fusion Protocol</h4><p>Copper sits at the intersection of every major pillar: energy (ATP via cytochrome c oxidase), detox (metallothioneins for mercury/lead/arsenic), hydration (collagen strengthens gut lining and blood vessels), antioxidant defence (SOD, catalase, ceruloplasmin), hormones (DHEA, testosterone, thyroid T4→T3), and immunity (white blood cell production). A copper deficiency silently undermines everything else you're doing.</p></div>
+
+  <div class="cg">
+    <div class="sc"><div class="ci">⚡</div><h3>Energy &amp; Mitochondria</h3><div class="aka">Complex IV — The Final Step</div><p>Copper forms cytochrome c oxidase (Complex IV) — without it, ATP production collapses. Improves cellular respiration, oxygen utilisation, and fat burning. Copper increases ATP output in every cell. → <a href="#mito" style="color:var(--gold-dim)">See also: Mitochondrial Function</a></p><div class="ct"><span class="tg">Complex IV</span><span class="tg">ATP</span></div></div>
+    <div class="sc"><div class="ci">🛡️</div><h3>Antioxidant Enzymes</h3><div class="aka">SOD · Ceruloplasmin · Catalase</div><p>Copper is essential for making SOD (the body's primary antioxidant enzyme), ceruloplasmin (iron metabolism + antihistamine), and catalase. These collectively neutralise superoxide radicals, manage iron, and reduce histamine. → <a href="#antioxidants" style="color:var(--gold-dim)">See also: Antioxidant Pathways</a></p><div class="ct"><span class="tg">SOD</span><span class="tg">ceruloplasmin</span></div></div>
+    <div class="sc"><div class="ci">🧬</div><h3>Collagen &amp; Structure</h3><div class="aka">Bones · Skin · Gut Lining · Blood Vessels</div><p>Copper makes collagen (with zinc and vitamin C). Bones are 35% collagen, muscles 30%. Copper strengthens gut lining ("inside skin"), skin, blood vessels, tendons. Fixes leaky gut as an astringent (tightens pores). Takes calcium out of soft tissues and into bones.</p><div class="ct"><span class="tg">collagen</span><span class="tg">leaky gut</span><span class="tg">bones</span></div></div>
+    <div class="sc"><div class="ci">🧠</div><h3>Brain &amp; Nervous System</h3><div class="aka">4 Neurotransmitters + Myelin</div><p>Boosts serotonin, dopamine, norepinephrine, and adrenaline. Acts as a neurotransmitter itself. Restores myelin sheath (nerve coating for speed and coordination). Detoxes fluoride (a nerve toxin). Lengthens telomeres. → <a href="#neuro" style="color:var(--gold-dim)">See also: Brain &amp; Cognitive</a></p><div class="ct"><span class="tg">myelin</span><span class="tg">neurotransmitters</span><span class="tg">telomeres</span></div></div>
+    <div class="sc"><div class="ci">🔶</div><h3>Detoxification</h3><div class="aka">Mercury · Lead · Arsenic · Fluoride</div><p>Copper is needed to make metallothioneins — the family of detoxing enzymes that chelate mercury, lead, and arsenic (with zinc and selenium). Binds fluoride and carries it out. SOD eliminates many chemical poisons. 20+ copper-dependent detox enzymes. → <a href="#detox" style="color:var(--gold-dim)">See also: Detoxification Pathways</a></p><div class="ct"><span class="tg">metallothioneins</span><span class="tg">heavy metals</span></div></div>
+    <div class="sc"><div class="ci">🫀</div><h3>Heart &amp; Circulation</h3><div class="aka">14-80 Cardiovascular Benefits</div><p>Clears cholesterol and calcium from blood vessels. Increases red blood cells (cures copper-deficiency anaemia). Helps build new capillaries. Strengthens heart muscle. Makes better-functioning, longer-lasting red blood cells. → <a href="#cardio" style="color:var(--gold-dim)">See also: Cardio-Metabolic</a></p><div class="ct"><span class="tg">RBC</span><span class="tg">cholesterol</span></div></div>
+    <div class="sc"><div class="ci">🦠</div><h3>Immune Function</h3><div class="aka">Anti-Bacterial · Anti-Fungal · Anti-Viral · Anti-Parasitic</div><p>Copper makes more white blood cells that function better and last longer. Kills fungus, bacteria, viruses, parasites, and worms. The oligodynamic effect — copper surfaces kill microbes on contact.</p><div class="ct"><span class="tg">WBC</span><span class="tg">oligodynamic</span></div></div>
+    <div class="sc"><div class="ci">🔄</div><h3>Gut Health</h3><div class="aka">20 Ways Copper Heals the Gut</div><p>Fixes leaky gut (astringent), anti-inflammatory for gut lining, stops ulcers and bleeding, makes 5+ antihistamine enzymes (reducing food allergies), makes collagen for gut lining, boosts bile production for fat digestion, helps make HCl (hydrochloric acid) with zinc and chloride salt. → <a href="#gut" style="color:var(--gold-dim)">See also: Gut Health</a></p><div class="ct"><span class="tg">leaky gut</span><span class="tg">bile</span><span class="tg">HCl</span></div></div>
+    <div class="sc"><div class="ci">💪</div><h3>Hormones &amp; Vitality</h3><div class="aka">DHEA · Testosterone · Thyroid T3/T4</div><p>Increases DHEA (master hormone → testosterone). Boosts growth hormone. Helps convert T4 to T3 (active thyroid). Increases insulin sensitivity. Burns fat. → <a href="#sexual-health" style="color:var(--gold-dim)">See also: Sexual Health</a></p><div class="ct"><span class="tg">DHEA</span><span class="tg">testosterone</span><span class="tg">thyroid</span></div></div>
+  </div>
+
+  <div class="co" style="margin-top:1.5rem"><h4>The Zinc:Copper 3:1 Ratio — CRITICAL</h4><p>Excess zinc depletes copper, crippling energy production and detox capacity. Always supplement zinc and copper together at 3:1. Copper vessels provide ~0.4mg copper/day passively. Therapeutic doses: 6-30mg/day (see Mitochondrial Nutrients). Copper at 10-20mg/day does NOT harm the liver (Olivares study).</p></div>
+</section>
+
+<div class="dv"><span>✦</span></div>
+
+<!-- 24 TEAS -->
 <section class="ps c-olive" id="teas">
-  <div class="sh"><div class="sn">23</div><div class="stg"><div class="sl">Therapeutic Teas</div><h2 class="st">Medicinal Teas</h2></div></div>
+  <div class="sh"><div class="sn">24</div><div class="stg"><div class="sl">Therapeutic Teas</div><h2 class="st">Medicinal Teas</h2></div></div>
   <div class="cg">
     <div class="sc"><div class="ci">🌲</div><h3>Pine Needle Tea</h3><div class="aka">Suramin + Shikimic Acid + Vitamin C</div><p>Rich in suramin — a potent anti-parasitic, antiviral, and detox agent that inhibits viral replication (particularly retroviruses) and supports immune recovery. Contains shikimic acid (same active as Tamiflu). High vitamin C (5× more than lemons). Quercetin. Also contains alpha-pinene (bronchodilator), chlorophyll, iron, and proanthocyanidins. Supports respiratory health, immune function, and heavy metal detoxification.</p><div class="ct"><span class="tg">suramin detox</span><span class="tg">shikimic acid</span><span class="tg">5× vitamin C</span></div></div>
     <div class="sc"><div class="ci">🌱</div><h3>Fenugreek Tea</h3><div class="aka">Trigonelline + Galactomannan + 4-Hydroxyisoleucine</div><p>Source of trigonelline (NAD+ precursor via Preiss-Handler pathway). Galactomannan fibre for blood sugar control. Contains 4-hydroxyisoleucine which directly stimulates insulin secretion. Supports testosterone via furostanolic saponins (increases free testosterone, inhibits aromatase). Anti-inflammatory (diosgenin). Rich in iron, manganese, and B vitamins. Excellent coffee replacement.</p><div class="ct"><span class="tg">NAD+</span><span class="tg">testosterone</span><span class="tg">insulin</span><span class="tg">coffee replacement</span></div></div>
@@ -755,7 +785,7 @@ footer p{font-size:.55rem}
 
 <!-- 24 RLT -->
 <section class="ps c-amber" id="rlt">
-  <div class="sh"><div class="sn">24</div><div class="stg"><div class="sl">Solar Therapy</div><h2 class="st">Red Light Therapy &amp; Vitamin D</h2></div></div>
+  <div class="sh"><div class="sn">25</div><div class="stg"><div class="sl">Solar Therapy</div><h2 class="st">Red Light Therapy &amp; Vitamin D</h2></div></div>
   <p class="si">The gold standard RLT comes from natural solar rays — don't let anyone tell you otherwise. 10-15 min, timing matters.</p>
   <div class="ig">
     <div class="ip"><h3>Natural Solar RLT</h3><ul><li>10-15 min sun exposure, 2×/week, small skin area</li><li>Early morning or late afternoon for best RLT spectrum</li><li>Benefits far outweigh potential skin harm long-term</li><li>Multi Spectral Imaging tracks photo ageing</li></ul></div>
@@ -770,7 +800,7 @@ footer p{font-size:.55rem}
 
 <!-- 25 ANTIDOTES -->
 <section class="ps c-gold" id="antidotes">
-  <div class="sh"><div class="sn">25</div><div class="stg"><div class="sl">The Nuclear Options</div><h2 class="st">Universal Antidotes</h2></div></div>
+  <div class="sh"><div class="sn">26</div><div class="stg"><div class="sl">The Nuclear Options</div><h2 class="st">Universal Antidotes</h2></div></div>
   <p class="si">Potent agents requiring strict protocols. Proceed with informed respect.</p>
   <div class="cg" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))">
     <div class="sc"><div class="ci">💧</div><h3>DMSO</h3><div class="aka">Dimethyl Sulfoxide</div><p>FDA-approved solvent. Penetrates all tissues except nails. Hydroxyl scavenger. Anti-inflammatory. Sulfation donor. Purity paramount — transports whatever is on skin.</p><div class="ct"><span class="tg">transdermal</span><span class="tg">sulfation</span></div></div>
@@ -783,7 +813,7 @@ footer p{font-size:.55rem}
 
 <!-- 26 COFFEE -->
 <section class="ps c-rose" id="coffee">
-  <div class="sh"><div class="sn">26</div><div class="stg"><div class="sl">Critical Warning</div><h2 class="st">The Coffee Problem</h2></div></div>
+  <div class="sh"><div class="sn">27</div><div class="stg"><div class="sl">Critical Warning</div><h2 class="st">The Coffee Problem</h2></div></div>
   <div class="co" style="border-left-color:var(--red)"><h4>1 Cup Coffee = 5 Glasses of Pure Water</h4><p>Potent diuretic. Intracellular Mg and Ca depletion exacerbates dehydration. Anything that leaches magnesium is a massive longevity downside.</p></div>
   <div class="ig">
     <div class="ip"><h3>Dehydration</h3><ul><li>5 glasses clean water per cup needed</li><li>Intracellular Mg + Ca depletion</li></ul></div>
@@ -798,7 +828,7 @@ footer p{font-size:.55rem}
 
 <!-- 27 SUPPLEMENT STRATEGIES -->
 <section class="ps c-gold" id="supplements">
-  <div class="sh"><div class="sn">27</div><div class="stg"><div class="sl">Strategies That Work</div><h2 class="st">How to Supplement</h2></div></div>
+  <div class="sh"><div class="sn">28</div><div class="stg"><div class="sl">Strategies That Work</div><h2 class="st">How to Supplement</h2></div></div>
   <div class="ig">
     <div class="ip"><h3>Timing &amp; Delivery</h3><ul><li>Fat-soluble vitamins WITH meals (trans-resveratrol, K2, EVOO)</li><li>Proteolytic enzymes FASTED (papaya seeds, bromelain)</li><li>AM: NMN, sucrosomial Mg, malate Mg</li><li>PM: Mg glycinate, taurate, L-threonate, 5-HTP, melatonin</li><li>Cycle: 5 days on / 2 days off. Stop ALL supplementation for a whole month at least once or twice per year — this returns the body to nominal levels, enhances nutrient sensitivity on resumption, and retrains metabolic functions as nutrient assembly lines fire up again</li></ul></div>
     <div class="ip"><h3>Choose Superior Forms</h3><ul><li>Acetyl groups for BBB penetration</li><li>Bioavailable forms: Benfotiamine (B1), Curcumin BCM-95</li><li>Liposomal for glutathione</li><li>Ethyl esters for NAC (NACET)</li><li>Sublingual for NMN, chelated minerals</li><li>Use several types of magnesium daily, spread doses into smaller chunks (with meals) throughout the day to maximise absorption — active channel TRPM6 saturates and passive absorption only captures 7% of whatever is present. Cycle absorption routes (topically, orally, Epsom salt baths, etc.)</li><li>Lactic acid bacteria (kefir) as biodelivery vehicle — only 30% of oral intake is processed</li></ul></div>
@@ -812,7 +842,7 @@ footer p{font-size:.55rem}
 <!-- 28 IMPLEMENTATION -->
 <div class="banner"><div class="bi"><p class="bq">"Regular testing and measurement are paramount to longevity. Become proactive — detect and anticipate potential health problems before they occur. The opposite stance, reactive, is akin to <em>navigating your own Titanic in a sea of icebergs, at night, in total darkness</em>."</p></div></div>
 <section class="ps c-gold" id="implementation">
-  <div class="sh"><div class="sn">28</div><div class="stg"><div class="sl">Process &amp; Tracking</div><h2 class="st">Implementation</h2></div></div>
+  <div class="sh"><div class="sn">29</div><div class="stg"><div class="sl">Process &amp; Tracking</div><h2 class="st">Implementation</h2></div></div>
   <div class="co"><h4>The Positive Feedback Loop</h4><p>NAD+ repletion → ATP → more energy → better exercise → better nutrition → better sleep → enhanced repair → repeat. The loop IS the strategy.</p></div>
 
   <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;margin-bottom:1.2rem;color:var(--gold)">Daily Timing Protocol</h3>
@@ -955,7 +985,7 @@ document.querySelectorAll('.ps').forEach(s=>obs.observe(s));
 // Build section navigator
 const sNav=document.getElementById('sectionNav');
 const sections=document.querySelectorAll('.ps[id]');
-const sLabels={fundamentals:'Fundamentals',lifestyle:'Lifestyle',fasting:'Fasting',stress:'Stress',biomarkers:'Biomarkers',autophagy:'Autophagy','building-blocks':'Blocks',nutrition:'Nutrition',gut:'Gut',recycle:'Recycle',nad:'NAD+',mito:'Mito',antioxidants:'Antioxidants',cardio:'Cardio','anti-inflammatories':'Anti-Infl.','inflammation-vectors':'Vectors',oils:'Oils',neuro:'Brain','sexual-health':'Sexual',magnesium:'Magnesium',detox:'Detox','organ-detox':'Organs',mycotoxins:'Mycotoxins',genotoxicity:'DNA',teas:'Teas',rlt:'RLT',antidotes:'Antidotes',coffee:'Coffee',supplements:'Supps',implementation:'Implement'};
+const sLabels={fundamentals:'Fundamentals',lifestyle:'Lifestyle',fasting:'Fasting',stress:'Stress',biomarkers:'Biomarkers',autophagy:'Autophagy','building-blocks':'Blocks',nutrition:'Nutrition',gut:'Gut',recycle:'Recycle',nad:'NAD+',mito:'Mito',antioxidants:'Antioxidants',cardio:'Cardio','anti-inflammatories':'Anti-Infl.','inflammation-vectors':'Vectors',oils:'Oils',neuro:'Brain','sexual-health':'Sexual',magnesium:'Magnesium',detox:'Detox','organ-detox':'Organs',mycotoxins:'Mycotoxins',genotoxicity:'DNA',copper:'Copper',teas:'Teas',rlt:'RLT',antidotes:'Antidotes',coffee:'Coffee',supplements:'Supps',implementation:'Implement'};
 sections.forEach(s=>{
   const a=document.createElement('a');
   a.href='#'+s.id;
