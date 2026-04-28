@@ -38,8 +38,25 @@ nav.scrolled{padding:.4rem 2rem;background:rgba(10,10,10,.95)}
 .nk{display:flex;gap:.08rem;flex-wrap:wrap;justify-content:flex-end}
 .nk a{color:#fff;text-decoration:none;font-size:.78rem;letter-spacing:.03em;text-transform:uppercase;padding:.2rem .32rem;border-radius:3px;transition:all .3s;font-weight:700;white-space:nowrap}
 .nk a:hover{color:var(--gold);background:rgba(201,168,76,.08)}
-.nt{display:none;background:none;border:1px solid var(--border);color:var(--text-dim);padding:.3rem .6rem;border-radius:4px;font-size:.6rem;cursor:pointer;font-family:'JetBrains Mono',monospace}
-@media(max-width:960px){.nt{display:block}.nk{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(10,10,10,.97);border-bottom:1px solid var(--border);padding:.8rem;flex-direction:column}.nk.open{display:flex}.nk a{padding:.6rem .9rem;font-size:.8rem}}
+.nt{display:none;background:none;border:none;color:#fff;padding:.5rem;cursor:pointer;z-index:1002;position:relative;width:28px;height:22px}
+.nt span,.nt span::before,.nt span::after{display:block;width:22px;height:1.5px;background:#fff;border-radius:2px;transition:all .35s cubic-bezier(.77,.2,.05,1)}
+.nt span{position:relative}.nt span::before,.nt span::after{content:'';position:absolute;left:0}
+.nt span::before{top:-7px}.nt span::after{top:7px}
+.nt.active span{background:transparent}
+.nt.active span::before{top:0;transform:rotate(45deg)}
+.nt.active span::after{top:0;transform:rotate(-45deg)}
+.drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:998;opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s ease}
+.drawer-overlay.open{opacity:1;visibility:visible}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(340px,85vw);background:rgba(15,15,15,.98);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);z-index:999;transform:translateX(100%);transition:transform .45s cubic-bezier(.32,.72,0,1);overflow-y:auto;-webkit-overflow-scrolling:touch;border-left:1px solid var(--border)}
+.drawer.open{transform:translateX(0)}
+.drawer-inner{padding:5rem 1.8rem 3rem}
+.drawer-cat{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-dim);padding:1.2rem 0 .4rem;opacity:.7}
+.drawer-cat:first-child{padding-top:.5rem}
+.drawer a{display:block;color:var(--text);text-decoration:none;font-family:'DM Sans',sans-serif;font-size:1.05rem;font-weight:400;padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.04);transition:color .2s,padding-left .2s}
+.drawer a:hover,.drawer a:active{color:var(--gold);padding-left:.5rem}
+.drawer-close{position:absolute;top:1.2rem;right:1.5rem;background:none;border:none;color:var(--text-muted);font-size:1.4rem;cursor:pointer;padding:.5rem;transition:color .2s;line-height:1}
+.drawer-close:hover{color:#fff}
+@media(max-width:960px){.nt{display:flex;align-items:center;justify-content:center}.nk{display:none !important}}
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:5.5rem 2rem 3.5rem;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;top:-40%;left:-40%;width:180%;height:180%;background:radial-gradient(ellipse at 50% 30%,rgba(201,168,76,.06) 0%,transparent 55%),radial-gradient(ellipse at 20% 80%,rgba(74,106,140,.04) 0%,transparent 50%);animation:hg 12s ease-in-out infinite alternate}
 @keyframes hg{0%{transform:translate(0,0) scale(1)}100%{transform:translate(2%,-2%) scale(1.05)}}
@@ -260,7 +277,7 @@ footer p{font-size:.62rem}
 
 <nav id="mainNav" role="navigation" aria-label="Main navigation">
   <div class="nl">The Fusion Protocol<span>by Pedro Basto</span></div>
-  <button class="nt" aria-label="Toggle menu" onclick="document.querySelector('.nk').classList.toggle('open')">Menu</button>
+  <button class="nt" aria-label="Toggle menu" onclick="toggleDrawer()"><span></span></button>
   <div class="nk">
     <span style="color:var(--gold-dim);font-size:.62rem;font-family:'JetBrains Mono',monospace;letter-spacing:.08em;padding:.2rem .4rem;opacity:.6">ABOUT</span><a href="#" onclick="document.querySelector('.bio').scrollIntoView({behavior:'smooth'});return false">Pedro Basto</a>
     <span style="color:var(--gold-dim);font-size:.62rem;font-family:'JetBrains Mono',monospace;letter-spacing:.08em;padding:.2rem .4rem;opacity:.6">FOUNDATION</span><a href="#fundamentals">Fundamentals</a><a href="#lifestyle">Lifestyle</a><a href="#fasting">Fasting</a><a href="#stress">Stress</a><a href="#biomarkers">Biomarkers</a>
@@ -270,6 +287,56 @@ footer p{font-size:.62rem}
     <span style="color:var(--gold-dim);font-size:.62rem;font-family:'JetBrains Mono',monospace;letter-spacing:.08em;padding:.2rem .4rem;opacity:.6">IMPLEMENT</span><a href="#coffee">Coffee</a><a href="#supplements">Supps</a><a href="#implementation">Protocol</a>
   </div>
 </nav>
+
+<!-- Apple-style Drawer Menu -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="toggleDrawer()"></div>
+<div class="drawer" id="drawer">
+  <button class="drawer-close" onclick="toggleDrawer()" aria-label="Close menu">✕</button>
+  <div class="drawer-inner">
+    <div class="drawer-cat">About</div>
+    <a href="#" onclick="scrollToBio()">Pedro Basto</a>
+
+    <div class="drawer-cat">Foundation</div>
+    <a href="#fundamentals" onclick="toggleDrawer()">Longevity Fundamentals</a>
+    <a href="#lifestyle" onclick="toggleDrawer()">Lifestyle Pillars</a>
+    <a href="#fasting" onclick="toggleDrawer()">Fasting</a>
+    <a href="#stress" onclick="toggleDrawer()">Stress Management</a>
+    <a href="#biomarkers" onclick="toggleDrawer()">Biomarkers</a>
+
+    <div class="drawer-cat">Compounds</div>
+    <a href="#building-blocks" onclick="toggleDrawer()">Building Blocks</a>
+    <a href="#nutrition" onclick="toggleDrawer()">Nutrition</a>
+    <a href="#gut" onclick="toggleDrawer()">Gut Health</a>
+    <a href="#recycle" onclick="toggleDrawer()">Rebuild & Recycle</a>
+    <a href="#nad" onclick="toggleDrawer()">NAD+ Pathway</a>
+    <a href="#mito" onclick="toggleDrawer()">Mitochondrial Function</a>
+    <a href="#antioxidants" onclick="toggleDrawer()">Antioxidant Pathways</a>
+    <a href="#copper" onclick="toggleDrawer()">Copper</a>
+
+    <div class="drawer-cat">Systems</div>
+    <a href="#cardio" onclick="toggleDrawer()">Cardio-Metabolic</a>
+    <a href="#anti-inflammatories" onclick="toggleDrawer()">Anti-Inflammatories</a>
+    <a href="#inflammation-vectors" onclick="toggleDrawer()">Inflammation Vectors</a>
+    <a href="#oils" onclick="toggleDrawer()">Oils & Fatty Acids</a>
+    <a href="#neuro" onclick="toggleDrawer()">Brain & Cognitive</a>
+    <a href="#sexual-health" onclick="toggleDrawer()">Sexual Health</a>
+    <a href="#magnesium" onclick="toggleDrawer()">Magnesium</a>
+
+    <div class="drawer-cat">Detox & Defence</div>
+    <a href="#detox" onclick="toggleDrawer()">Detoxification</a>
+    <a href="#organ-detox" onclick="toggleDrawer()">Organ Detox</a>
+    <a href="#mycotoxins" onclick="toggleDrawer()">Mycotoxins</a>
+    <a href="#genotoxicity" onclick="toggleDrawer()">Genotoxicity</a>
+    <a href="#teas" onclick="toggleDrawer()">Medicinal Teas</a>
+    <a href="#rlt" onclick="toggleDrawer()">RLT & Vitamin D</a>
+    <a href="#antidotes" onclick="toggleDrawer()">Universal Antidotes</a>
+
+    <div class="drawer-cat">Implement</div>
+    <a href="#coffee" onclick="toggleDrawer()">The Coffee Problem</a>
+    <a href="#supplements" onclick="toggleDrawer()">How to Supplement</a>
+    <a href="#implementation" onclick="toggleDrawer()">Implementation</a>
+  </div>
+</div>
 
 <!-- Search Trigger -->
 <button class="search-trigger" aria-label="Search" onclick="toggleSearch()" title="Search (Ctrl+K)">⌕ Search</button>
@@ -983,6 +1050,22 @@ footer p{font-size:.62rem}
 </footer>
 
 <script>
+// Drawer Menu
+const drawer=document.getElementById('drawer');
+const drawerOverlay=document.getElementById('drawerOverlay');
+const menuBtn=document.querySelector('.nt');
+function toggleDrawer(){
+  const isOpen=drawer.classList.contains('open');
+  drawer.classList.toggle('open');
+  drawerOverlay.classList.toggle('open');
+  menuBtn.classList.toggle('active');
+  document.body.style.overflow=isOpen?'':'hidden';
+}
+function scrollToBio(){
+  toggleDrawer();
+  setTimeout(()=>document.querySelector('.bio').scrollIntoView({behavior:'smooth'}),100);
+}
+
 // Nav shrink
 const nav=document.getElementById('mainNav');
 window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>50)});
