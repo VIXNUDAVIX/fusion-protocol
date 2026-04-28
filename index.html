@@ -301,47 +301,47 @@ footer p{font-size:.62rem}
     <a href="#" onclick="scrollToBio()">Pedro Basto</a>
 
     <div class="drawer-cat">Foundation</div>
-    <a href="#fundamentals" onclick="toggleDrawer()">Longevity Fundamentals</a>
-    <a href="#lifestyle" onclick="toggleDrawer()">Lifestyle Pillars</a>
-    <a href="#fasting" onclick="toggleDrawer()">Fasting</a>
-    <a href="#stress" onclick="toggleDrawer()">Stress Management</a>
-    <a href="#biomarkers" onclick="toggleDrawer()">Biomarkers</a>
+    <a href="#fundamentals" onclick="event.preventDefault();drawerNav('#fundamentals')">Longevity Fundamentals</a>
+    <a href="#lifestyle" onclick="event.preventDefault();drawerNav('#lifestyle')">Lifestyle Pillars</a>
+    <a href="#fasting" onclick="event.preventDefault();drawerNav('#fasting')">Fasting</a>
+    <a href="#stress" onclick="event.preventDefault();drawerNav('#stress')">Stress Management</a>
+    <a href="#biomarkers" onclick="event.preventDefault();drawerNav('#biomarkers')">Biomarkers</a>
 
     <div class="drawer-cat">Compounds</div>
-    <a href="#building-blocks" onclick="toggleDrawer()">Building Blocks</a>
-    <a href="#nutrition" onclick="toggleDrawer()">Nutrition</a>
-    <a href="#gut" onclick="toggleDrawer()">Gut Health</a>
-    <a href="#recycle" onclick="toggleDrawer()">Rebuild & Recycle</a>
-    <a href="#nad" onclick="toggleDrawer()">NAD+ Pathway</a>
-    <a href="#mito" onclick="toggleDrawer()">Mitochondrial Function</a>
-    <a href="#antioxidants" onclick="toggleDrawer()">Antioxidant Pathways</a>
-    <a href="#copper" onclick="toggleDrawer()">Copper</a>
+    <a href="#building-blocks" onclick="event.preventDefault();drawerNav('#building-blocks')">Building Blocks</a>
+    <a href="#nutrition" onclick="event.preventDefault();drawerNav('#nutrition')">Nutrition</a>
+    <a href="#gut" onclick="event.preventDefault();drawerNav('#gut')">Gut Health</a>
+    <a href="#recycle" onclick="event.preventDefault();drawerNav('#recycle')">Rebuild & Recycle</a>
+    <a href="#nad" onclick="event.preventDefault();drawerNav('#nad')">NAD+ Pathway</a>
+    <a href="#mito" onclick="event.preventDefault();drawerNav('#mito')">Mitochondrial Function</a>
+    <a href="#antioxidants" onclick="event.preventDefault();drawerNav('#antioxidants')">Antioxidant Pathways</a>
+    <a href="#copper" onclick="event.preventDefault();drawerNav('#copper')">Copper</a>
 
     <div class="drawer-cat">Systems</div>
-    <a href="#cardio" onclick="toggleDrawer()">Cardio-Metabolic</a>
-    <a href="#anti-inflammatories" onclick="toggleDrawer()">Anti-Inflammatories</a>
-    <a href="#inflammation-vectors" onclick="toggleDrawer()">Inflammation Vectors</a>
-    <a href="#oils" onclick="toggleDrawer()">Oils & Fatty Acids</a>
-    <a href="#neuro" onclick="toggleDrawer()">Brain & Cognitive</a>
-    <a href="#sexual-health" onclick="toggleDrawer()">Sexual Health</a>
-    <a href="#magnesium" onclick="toggleDrawer()">Magnesium</a>
+    <a href="#cardio" onclick="event.preventDefault();drawerNav('#cardio')">Cardio-Metabolic</a>
+    <a href="#anti-inflammatories" onclick="event.preventDefault();drawerNav('#anti-inflammatories')">Anti-Inflammatories</a>
+    <a href="#inflammation-vectors" onclick="event.preventDefault();drawerNav('#inflammation-vectors')">Inflammation Vectors</a>
+    <a href="#oils" onclick="event.preventDefault();drawerNav('#oils')">Oils & Fatty Acids</a>
+    <a href="#neuro" onclick="event.preventDefault();drawerNav('#neuro')">Brain & Cognitive</a>
+    <a href="#sexual-health" onclick="event.preventDefault();drawerNav('#sexual-health')">Sexual Health</a>
+    <a href="#magnesium" onclick="event.preventDefault();drawerNav('#magnesium')">Magnesium</a>
 
     <div class="drawer-cat">Detox & Defence</div>
-    <a href="#detox" onclick="toggleDrawer()">Detoxification</a>
-    <a href="#organ-detox" onclick="toggleDrawer()">Organ Detox</a>
-    <a href="#mycotoxins" onclick="toggleDrawer()">Mycotoxins</a>
-    <a href="#genotoxicity" onclick="toggleDrawer()">Genotoxicity</a>
-    <a href="#teas" onclick="toggleDrawer()">Medicinal Teas</a>
-    <a href="#rlt" onclick="toggleDrawer()">RLT & Vitamin D</a>
-    <a href="#antidotes" onclick="toggleDrawer()">Universal Antidotes</a>
+    <a href="#detox" onclick="event.preventDefault();drawerNav('#detox')">Detoxification</a>
+    <a href="#organ-detox" onclick="event.preventDefault();drawerNav('#organ-detox')">Organ Detox</a>
+    <a href="#mycotoxins" onclick="event.preventDefault();drawerNav('#mycotoxins')">Mycotoxins</a>
+    <a href="#genotoxicity" onclick="event.preventDefault();drawerNav('#genotoxicity')">Genotoxicity</a>
+    <a href="#teas" onclick="event.preventDefault();drawerNav('#teas')">Medicinal Teas</a>
+    <a href="#rlt" onclick="event.preventDefault();drawerNav('#rlt')">RLT & Vitamin D</a>
+    <a href="#antidotes" onclick="event.preventDefault();drawerNav('#antidotes')">Universal Antidotes</a>
 
     <div class="drawer-cat">Implement</div>
-    <a href="#coffee" onclick="toggleDrawer()">The Coffee Problem</a>
-    <a href="#supplements" onclick="toggleDrawer()">How to Supplement</a>
-    <a href="#implementation" onclick="toggleDrawer()">Implementation</a>
+    <a href="#coffee" onclick="event.preventDefault();drawerNav('#coffee')">The Coffee Problem</a>
+    <a href="#supplements" onclick="event.preventDefault();drawerNav('#supplements')">How to Supplement</a>
+    <a href="#implementation" onclick="event.preventDefault();drawerNav('#implementation')">Implementation</a>
 
     <div class="drawer-cat">Tools</div>
-    <a href="#" onclick="toggleDrawer();setTimeout(toggleSearch,200)" style="color:var(--gold)">🔍 Search Protocol</a>
+    <a href="#" onclick="event.preventDefault();drawer.classList.remove('open');drawerOverlay.classList.remove('open');menuBtn.classList.remove('active');document.body.style.overflow='';setTimeout(toggleSearch,200)" style="color:var(--gold)">🔍 Search Protocol</a>
   </div>
 </div>
 
@@ -1067,9 +1067,22 @@ function toggleDrawer(){
   menuBtn.classList.toggle('active');
   document.body.style.overflow=isOpen?'':'hidden';
 }
+function drawerNav(id){
+  drawer.classList.remove('open');
+  drawerOverlay.classList.remove('open');
+  menuBtn.classList.remove('active');
+  document.body.style.overflow='';
+  setTimeout(()=>{
+    const el=document.querySelector(id);
+    if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+  },150);
+}
 function scrollToBio(){
-  toggleDrawer();
-  setTimeout(()=>document.querySelector('.bio').scrollIntoView({behavior:'smooth'}),100);
+  drawer.classList.remove('open');
+  drawerOverlay.classList.remove('open');
+  menuBtn.classList.remove('active');
+  document.body.style.overflow='';
+  setTimeout(()=>document.querySelector('.bio').scrollIntoView({behavior:'smooth'}),150);
 }
 
 // Nav shrink
