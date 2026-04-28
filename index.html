@@ -303,7 +303,6 @@ footer p{font-size:.62rem}
     <span style="color:var(--gold-dim);font-size:.62rem;font-family:'JetBrains Mono',monospace;letter-spacing:.08em;padding:.2rem .4rem;opacity:.6;display:none">IMPLEMENT</span><a href="#coffee">Coffee</a><a href="#supplements">Supps</a><a href="#implementation">Protocol</a>
   </div>
   <div style="display:flex;align-items:center;gap:.6rem">
-    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode" title="Toggle light/dark mode">☀️</button>
     <button class="search-trigger" aria-label="Search" onclick="toggleSearch()" title="Search (Ctrl+K)"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg></button>
     <button class="nt" aria-label="Toggle menu" onclick="toggleDrawer()"><span></span></button>
   </div>
@@ -359,7 +358,7 @@ footer p{font-size:.62rem}
 
     <div class="drawer-cat">Tools</div>
     <a href="#" onclick="event.preventDefault();drawer.classList.remove('open');drawerOverlay.classList.remove('open');menuBtn.classList.remove('active');document.body.style.overflow='';setTimeout(toggleSearch,200)" style="color:var(--gold)">🔍 Search Protocol</a>
-    <a href="#" onclick="event.preventDefault();toggleTheme()" style="color:var(--gold)">☀️ Toggle Light / Dark Mode</a>
+    <a href="#" id="themeDrawerLink" onclick="event.preventDefault();toggleTheme()" style="color:var(--gold)">☀️ Switch to Light Mode</a>
   </div>
 </div>
 
@@ -1075,14 +1074,14 @@ footer p{font-size:.62rem}
 
 <script>
 // Theme Toggle
-const themeBtn=document.querySelector('.theme-toggle');
 function toggleTheme(){
   document.documentElement.classList.toggle('light');
   const isLight=document.documentElement.classList.contains('light');
-  themeBtn.textContent=isLight?'🌙':'☀️';
+  const drawerLink=document.getElementById('themeDrawerLink');
+  if(drawerLink)drawerLink.textContent=isLight?'🌙 Switch to Dark Mode':'☀️ Switch to Light Mode';
   try{localStorage.setItem('fp-theme',isLight?'light':'dark')}catch(e){}
 }
-try{if(localStorage.getItem('fp-theme')==='light'){document.documentElement.classList.add('light');themeBtn.textContent='🌙'}}catch(e){}
+try{if(localStorage.getItem('fp-theme')==='light'){document.documentElement.classList.add('light');document.addEventListener('DOMContentLoaded',()=>{const dl=document.getElementById('themeDrawerLink');if(dl)dl.textContent='🌙 Switch to Dark Mode'})}}catch(e){}
 
 // Drawer Menu
 const drawer=document.getElementById('drawer');
