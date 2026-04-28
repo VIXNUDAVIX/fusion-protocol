@@ -167,8 +167,9 @@ footer .ab{max-width:580px;margin:0 auto .8rem;font-family:'DM Sans',sans-serif;
 .search-hit h4{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--gold);margin-bottom:.2rem}
 .search-hit p{font-size:.7rem;color:var(--text-dim);line-height:1.5}
 .search-hit .sh-section{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase}
-.search-trigger{position:fixed;top:.7rem;right:12rem;z-index:1001;background:none;border:1px solid var(--blue-light);color:var(--blue-light);padding:.25rem .6rem;border-radius:4px;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:.65rem;font-weight:700;letter-spacing:.06em;transition:all .3s}
-.search-trigger:hover{color:var(--gold);border-color:var(--gold-dim)}
+.search-trigger{background:none;border:none;color:#fff;padding:.4rem;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;z-index:1001;opacity:.8}
+.search-trigger svg{width:22px;height:22px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.search-trigger:hover{color:var(--gold);opacity:1;transform:scale(1.1)}
 
 /* TIMING PROTOCOL */
 .timing{display:flex;gap:.8rem;margin-bottom:2rem;flex-wrap:wrap}
@@ -241,7 +242,7 @@ details .rm{font-size:.98rem;line-height:1.8;padding:1.1rem}
 .vb .vb-l{width:90px;font-size:.7rem}
 .vb-v{font-size:.75rem}
 .snav{display:none}
-.search-trigger{right:1rem;top:auto;bottom:5rem;font-size:.65rem;padding:.35rem .7rem;position:fixed}
+
 .btt{width:48px;height:48px;font-size:1.1rem}
 .timing{flex-direction:column}
 .timing-slot{padding:1.4rem}
@@ -277,7 +278,6 @@ footer p{font-size:.62rem}
 
 <nav id="mainNav" role="navigation" aria-label="Main navigation">
   <div class="nl">The Fusion Protocol<span>by Pedro Basto</span></div>
-  <button class="nt" aria-label="Toggle menu" onclick="toggleDrawer()"><span></span></button>
   <div class="nk">
     <span style="color:var(--gold-dim);font-size:.62rem;font-family:'JetBrains Mono',monospace;letter-spacing:.08em;padding:.2rem .4rem;opacity:.6">ABOUT</span><a href="#" onclick="document.querySelector('.bio').scrollIntoView({behavior:'smooth'});return false">Pedro Basto</a>
     <span style="color:var(--gold-dim);font-size:.62rem;font-family:'JetBrains Mono',monospace;letter-spacing:.08em;padding:.2rem .4rem;opacity:.6">FOUNDATION</span><a href="#fundamentals">Fundamentals</a><a href="#lifestyle">Lifestyle</a><a href="#fasting">Fasting</a><a href="#stress">Stress</a><a href="#biomarkers">Biomarkers</a>
@@ -285,6 +285,10 @@ footer p{font-size:.62rem}
     <span style="color:var(--gold-dim);font-size:.62rem;font-family:'JetBrains Mono',monospace;letter-spacing:.08em;padding:.2rem .4rem;opacity:.6">SYSTEMS</span><a href="#cardio">Cardio</a><a href="#anti-inflammatories">Anti-Infl.</a><a href="#inflammation-vectors">Vectors</a><a href="#oils">Oils</a><a href="#neuro">Brain</a><a href="#sexual-health">Sexual</a><a href="#magnesium">Mag</a>
     <span style="color:var(--gold-dim);font-size:.62rem;font-family:'JetBrains Mono',monospace;letter-spacing:.08em;padding:.2rem .4rem;opacity:.6">DETOX &amp; DEFENCE</span><a href="#detox">Detox</a><a href="#organ-detox">Organs</a><a href="#mycotoxins">Mycotox</a><a href="#genotoxicity">DNA</a><a href="#teas">Teas</a><a href="#rlt">RLT</a><a href="#antidotes">Antidotes</a>
     <span style="color:var(--gold-dim);font-size:.62rem;font-family:'JetBrains Mono',monospace;letter-spacing:.08em;padding:.2rem .4rem;opacity:.6">IMPLEMENT</span><a href="#coffee">Coffee</a><a href="#supplements">Supps</a><a href="#implementation">Protocol</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:.6rem">
+    <button class="search-trigger" aria-label="Search" onclick="toggleSearch()" title="Search (Ctrl+K)"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg></button>
+    <button class="nt" aria-label="Toggle menu" onclick="toggleDrawer()"><span></span></button>
   </div>
 </nav>
 
@@ -335,11 +339,11 @@ footer p{font-size:.62rem}
     <a href="#coffee" onclick="toggleDrawer()">The Coffee Problem</a>
     <a href="#supplements" onclick="toggleDrawer()">How to Supplement</a>
     <a href="#implementation" onclick="toggleDrawer()">Implementation</a>
+
+    <div class="drawer-cat">Tools</div>
+    <a href="#" onclick="toggleDrawer();setTimeout(toggleSearch,200)" style="color:var(--gold)">🔍 Search Protocol</a>
   </div>
 </div>
-
-<!-- Search Trigger -->
-<button class="search-trigger" aria-label="Search" onclick="toggleSearch()" title="Search (Ctrl+K)">⌕ Search</button>
 
 <!-- Search Overlay -->
 <div class="search-wrap" role="search" aria-label="Search protocol" id="searchWrap">
