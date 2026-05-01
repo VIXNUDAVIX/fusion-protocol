@@ -32,6 +32,7 @@ html.light{--bg:#f5f2ec;--bg-alt:#edeae4;--bg-card:#ffffff;--bg-card-hover:#fafa
 html.light body::before{display:none}
 html.light nav{background:rgba(245,242,236,.92)}
 html.light .nk a{color:var(--text)}
+html.light .nav-dropdown a{color:var(--text-dim)}
 html.light .nl span{color:var(--text-dim)}
 html.light .nt span,html.light .nt span::before,html.light .nt span::after{background:var(--text)}
 html.light .search-trigger{color:var(--text)}
@@ -51,8 +52,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:.7rem 2rem;display:
 nav.scrolled{padding:.4rem 2rem;background:rgba(10,10,10,.95)}
 .nl{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300;letter-spacing:.1em;color:var(--gold);text-transform:uppercase;white-space:nowrap}
 .nl span{font-size:.85rem;color:#fff;font-weight:700;letter-spacing:.05em;display:block;font-family:'JetBrains Mono',monospace;text-transform:none;margin-top:-.1rem}
-.nk{display:flex;gap:.08rem;flex-wrap:wrap;justify-content:flex-end}
+.nk{display:flex;gap:.15rem;flex-wrap:wrap;justify-content:flex-end;align-items:center}
 .nk a{color:#fff;text-decoration:none;font-size:.78rem;letter-spacing:.03em;text-transform:uppercase;padding:.2rem .32rem;border-radius:3px;transition:all .3s;font-weight:700;white-space:nowrap}
+.nav-group{position:relative;display:inline-flex;align-items:center}
+.nav-group-label{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-dim);padding:.35rem .55rem;cursor:default;transition:color .25s;user-select:none;white-space:nowrap}
+.nav-group:hover .nav-group-label{color:var(--gold)}
+.nav-group-label::after{content:'▾';margin-left:.3rem;font-size:.5rem;opacity:.5}
+.nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);min-width:210px;background:rgba(12,12,12,.98);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid var(--border-light);border-radius:10px;padding:.6rem 0;opacity:0;visibility:hidden;transition:all .25s cubic-bezier(.2,.8,.2,1);z-index:100;box-shadow:0 16px 48px rgba(0,0,0,.55)}
+.nav-group:hover .nav-dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.nav-dropdown a{display:block;padding:.6rem 1.2rem;font-size:.85rem;font-family:'DM Sans',sans-serif;font-weight:400;letter-spacing:0;text-transform:none;color:var(--text-dim);transition:all .15s;white-space:nowrap}
+.nav-dropdown a:hover{color:var(--gold);background:rgba(255,255,255,.04);padding-left:1.4rem}
+html.light .nav-dropdown{background:rgba(255,255,255,.98);border-color:var(--border);box-shadow:0 16px 48px rgba(0,0,0,.1)}
+html.light .nav-group-label{color:var(--gold)}
+html.light .nav-dropdown a{color:var(--text-dim)}
+html.light .nav-dropdown a:hover{background:rgba(0,0,0,.04)}
 .nk a:hover{color:var(--gold);background:rgba(201,168,76,.08)}
 .nt{display:none;background:none;border:none;color:#fff;padding:.5rem;cursor:pointer;z-index:1002;position:relative;width:28px;height:22px}
 .nt span,.nt span::before,.nt span::after{display:block;width:22px;height:1.5px;background:#fff;border-radius:2px;transition:all .35s cubic-bezier(.77,.2,.05,1)}
@@ -295,12 +308,12 @@ footer p{font-size:.62rem}
 <nav id="mainNav" role="navigation" aria-label="Main navigation">
   <div class="nl">The Fusion Protocol<span>by Pedro Basto</span></div>
   <div class="nk">
-    <span style="color:var(--gold-dim);font-size:.62rem;font-family:'JetBrains Mono',monospace;letter-spacing:.08em;padding:.2rem .4rem;opacity:.6;display:inline">ABOUT</span><a href="#" onclick="document.querySelector('.bio').scrollIntoView({behavior:'smooth'});return false">Pedro Basto</a>
-    <span style="color:var(--gold-dim);font-size:.62rem;font-family:'JetBrains Mono',monospace;letter-spacing:.08em;padding:.2rem .4rem;opacity:.6;display:inline">FOUNDATION</span><a href="#fundamentals">Fundamentals</a><a href="#lifestyle">Lifestyle</a><a href="#fasting">Fasting</a><a href="#stress">Stress</a><a href="#biomarkers">Biomarkers</a>
-    <span style="color:var(--gold-dim);font-size:.62rem;font-family:'JetBrains Mono',monospace;letter-spacing:.08em;padding:.2rem .4rem;opacity:.6;display:inline">COMPOUNDS</span><a href="#building-blocks">Blocks</a><a href="#nutrition">Nutrition</a><a href="#gut">Gut</a><a href="#recycle">Recycle</a><a href="#nad">NAD+</a><a href="#mito">Mito</a><a href="#antioxidants">A.O.</a><a href="#copper">Copper</a><a href="#coffee">Coffee</a>
-    <span style="color:var(--gold-dim);font-size:.62rem;font-family:'JetBrains Mono',monospace;letter-spacing:.08em;padding:.2rem .4rem;opacity:.6;display:inline">SYSTEMS</span><a href="#cardio">Cardio</a><a href="#anti-inflammatories">Anti-Infl.</a><a href="#inflammation-vectors">Vectors</a><a href="#oils">Oils</a><a href="#neuro">Brain</a><a href="#sexual-health">Sexual</a><a href="#magnesium">Mag</a>
-    <span style="color:var(--gold-dim);font-size:.62rem;font-family:'JetBrains Mono',monospace;letter-spacing:.08em;padding:.2rem .4rem;opacity:.6;display:inline">DETOX &amp; DEFENCE</span><a href="#detox">Detox</a><a href="#organ-detox">Organs</a><a href="#mycotoxins">Mycotox</a><a href="#lipotoxicity">Lipotox</a><a href="#genotoxicity">DNA</a><a href="#teas">Teas</a><a href="#rlt">RLT</a><a href="#antidotes">Antidotes</a>
-    <span style="color:var(--gold-dim);font-size:.62rem;font-family:'JetBrains Mono',monospace;letter-spacing:.08em;padding:.2rem .4rem;opacity:.6;display:inline">IMPLEMENT</span><a href="#supplements">Supps</a><a href="#implementation">Protocol</a>
+    <div class="nav-group"><span class="nav-group-label">About</span><div class="nav-dropdown"><a href="#" onclick="document.querySelector('.bio').scrollIntoView({behavior:'smooth'});return false">Pedro Basto</a></div></div>
+    <div class="nav-group"><span class="nav-group-label">Foundation</span><div class="nav-dropdown"><a href="#fundamentals">Fundamentals</a><a href="#lifestyle">Lifestyle</a><a href="#fasting">Fasting</a><a href="#stress">Stress</a><a href="#biomarkers">Biomarkers</a></div></div>
+    <div class="nav-group"><span class="nav-group-label">Compounds</span><div class="nav-dropdown"><a href="#building-blocks">Building Blocks</a><a href="#nutrition">Nutrition</a><a href="#gut">Gut Health</a><a href="#recycle">Rebuild &amp; Recycle</a><a href="#nad">NAD+ Pathway</a><a href="#mito">Mitochondria</a><a href="#antioxidants">Antioxidants</a><a href="#copper">Copper</a><a href="#coffee">The Coffee Problem</a></div></div>
+    <div class="nav-group"><span class="nav-group-label">Systems</span><div class="nav-dropdown"><a href="#cardio">Cardio-Metabolic</a><a href="#anti-inflammatories">Anti-Inflammatories</a><a href="#inflammation-vectors">Inflammation Vectors</a><a href="#oils">Oils &amp; Fatty Acids</a><a href="#neuro">Brain &amp; Cognitive</a><a href="#sexual-health">Sexual Health</a><a href="#magnesium">Magnesium</a></div></div>
+    <div class="nav-group"><span class="nav-group-label">Detox</span><div class="nav-dropdown"><a href="#detox">Detoxification</a><a href="#organ-detox">Organ Detox</a><a href="#mycotoxins">Mycotoxins</a><a href="#lipotoxicity">Lipotoxicity</a><a href="#genotoxicity">Genotoxicity</a><a href="#teas">Medicinal Teas</a><a href="#rlt">RLT &amp; Vitamin D</a><a href="#antidotes">Universal Antidotes</a></div></div>
+    <div class="nav-group"><span class="nav-group-label">Implement</span><div class="nav-dropdown"><a href="#supplements">How to Supplement</a><a href="#implementation">Implementation</a></div></div>
   </div>
   <div style="display:flex;align-items:center;gap:.6rem">
     <button class="search-trigger" aria-label="Search" onclick="toggleSearch()" title="Search (Ctrl+K)"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg></button>
