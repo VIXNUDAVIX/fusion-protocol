@@ -1153,10 +1153,13 @@ Calculate your dosage online according to your weight/70 Kg = 5g/Daily (body pro
 
 <footer>
   <p class="ab">Pedro Basto is a longevity researcher and protocol designer who tracks hundreds of variables daily. The Fusion Protocol integrates multiple doctrines, therapies, and ideologies of longevity into a single coherent framework.</p>
-  <p>© 2026 Pedro Basto. All rights reserved. The Fusion Protocol. Last updated: 26th May 2026.</p>
+  <p>© <span id="cr-year">2026</span> Pedro Basto. All rights reserved. The Fusion Protocol. <a href="https://github.com/VIXNUDAVIX/fusion-protocol/blob/main/LICENSE_1" rel="license" style="color:inherit;text-decoration:underline">License</a>. Last updated: 26th May 2026.</p>
 </footer>
 
 <script>
+// Auto-updating copyright year
+document.getElementById('cr-year').textContent=new Date().getFullYear();
+
 // Theme Toggle
 function toggleTheme(){
   document.documentElement.classList.toggle('light');
