@@ -57,6 +57,8 @@ nav.scrolled{padding:.4rem 2rem;background:rgba(10,10,10,.95)}
 .nav-group{position:relative;display:inline-flex;align-items:center}
 .nav-group-label{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-dim);padding:.35rem .55rem;cursor:default;transition:color .25s;user-select:none;white-space:nowrap}
 .nav-group:hover .nav-group-label{color:var(--gold)}
+.nav-solo{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);padding:.35rem .55rem;text-decoration:none;transition:color .25s;white-space:nowrap}
+.nav-solo:hover{color:var(--gold-light)}
 .nav-group-label::after{content:'▾';margin-left:.3rem;font-size:.5rem;opacity:.5}
 .nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);min-width:210px;background:rgba(12,12,12,.98);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid var(--border-light);border-radius:10px;padding:.6rem 0;opacity:0;visibility:hidden;transition:all .25s cubic-bezier(.2,.8,.2,1);z-index:100;box-shadow:0 16px 48px rgba(0,0,0,.55)}
 .nav-group:hover .nav-dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
@@ -334,6 +336,7 @@ html.light .supp-header:hover{background:rgba(0,0,0,.03)}
     <div class="nav-group"><span class="nav-group-label">Systems</span><div class="nav-dropdown"><a href="#cardio">Cardio-Metabolic</a><a href="#anti-inflammatories">Anti-Inflammatories</a><a href="#inflammation-vectors">Inflammation Vectors</a><a href="#oils">Oils &amp; Fatty Acids</a><a href="#neuro">Brain &amp; Cognitive</a><a href="#sexual-health">Sexual Health</a><a href="#magnesium">Magnesium</a></div></div>
     <div class="nav-group"><span class="nav-group-label">Detox</span><div class="nav-dropdown"><a href="#detox">Detoxification</a><a href="#organ-detox">Organ Detox</a><a href="#mycotoxins">Mycotoxins</a><a href="#lipotoxicity">Lipotoxicity</a><a href="#genotoxicity">Genotoxicity</a><a href="#teas">Medicinal Teas</a><a href="#rlt">RLT &amp; Vitamin D</a><a href="#antidotes">Universal Antidotes</a></div></div>
     <div class="nav-group"><span class="nav-group-label">Implement</span><div class="nav-dropdown"><a href="#supplements">How to Supplement</a><a href="#implementation">Implementation</a></div></div>
+    <a href="gallery.html" class="nav-solo">Gallery</a>
   </div>
   <div style="display:flex;align-items:center;gap:.6rem">
     <button class="search-trigger" aria-label="Search" onclick="toggleSearch()" title="Search (Ctrl+K)"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg></button>
@@ -388,6 +391,9 @@ html.light .supp-header:hover{background:rgba(0,0,0,.03)}
     <div class="drawer-cat">Implement</div>
     <a href="#supplements" onclick="event.preventDefault();drawerNav('#supplements')">How to Supplement</a>
     <a href="#implementation" onclick="event.preventDefault();drawerNav('#implementation')">Implementation</a>
+
+    <div class="drawer-cat">Gallery</div>
+    <a href="gallery.html">Photos &amp; Videos</a>
 
     <div class="drawer-cat">Tools</div>
     <a href="#" onclick="event.preventDefault();drawer.classList.remove('open');drawerOverlay.classList.remove('open');menuBtn.classList.remove('active');document.body.style.overflow='';setTimeout(toggleSearch,200)" style="color:var(--gold)">🔍 Search Protocol</a>
