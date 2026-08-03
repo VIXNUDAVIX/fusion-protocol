@@ -61,6 +61,11 @@ html.light nav.scrolled{background:rgba(245,242,236,.97)}
 .gfilter{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);background:none;border:1px solid var(--border);padding:.55rem 1.2rem;border-radius:999px;cursor:pointer;transition:all .25s}
 .gfilter:hover{border-color:var(--gold);color:var(--gold)}
 .gfilter.active{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+/* Sub-filters (categories under Photos) */
+.gsubfilters{display:flex;gap:.45rem;justify-content:center;flex-wrap:wrap;margin:-1.7rem auto 2.6rem;padding:0 1rem}
+.gsubfilter{font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);background:none;border:1px solid var(--border);padding:.42rem 1rem;border-radius:999px;cursor:pointer;transition:all .25s}
+.gsubfilter:hover{border-color:var(--gold);color:var(--gold)}
+.gsubfilter.active{background:var(--gold-dim);color:var(--bg);border-color:var(--gold-dim)}
 
 /* Grid */
 .gwrap{width:100%;max-width:1400px;margin:0 auto;padding:0 2rem 5rem}
@@ -134,6 +139,14 @@ footer a{color:inherit}
     <button class="gfilter" data-filter="videos" role="tab">Videos</button>
   </div>
 
+  <div class="gsubfilters" id="subFilters" role="tablist" aria-label="Filter photos by category" style="display:none">
+    <button class="gsubfilter active" data-sub="all" role="tab">All</button>
+    <button class="gsubfilter" data-sub="nutrition" role="tab">Nutrition</button>
+    <button class="gsubfilter" data-sub="exercise" role="tab">Exercise</button>
+    <button class="gsubfilter" data-sub="supplementation" role="tab">Supplementation</button>
+    <button class="gsubfilter" data-sub="merch" role="tab">Merch</button>
+  </div>
+
   <div class="gwrap">
     <div class="ggrid" id="galleryGrid" aria-live="polite"></div>
 
@@ -187,24 +200,29 @@ window.addEventListener('scroll',()=>{document.getElementById('mainNav').classLi
    Just uncomment / duplicate a line below and fill in your own file names.
    ===================================================================== */
 const GALLERY=[
-  { type:'image', src:'gallery/Cherry_Season.jpg',                 caption:'Cherry Season' },
-  { type:'image', src:'gallery/Cold_Plunge_Time.jpg',             caption:'Cold Plunge Time' },
-  { type:'image', src:'gallery/Collagen_Production.jpg',          caption:'Collagen Production' },
-  { type:'image', src:'gallery/Daily_Going_Nuts.jpg',            caption:'Daily Going Nuts' },
-  { type:'image', src:'gallery/Double_Kefir_Trouble.jpg',        caption:'Double Kefir Trouble' },
-  { type:'image', src:'gallery/Fast_Food_Pedro_Style.jpg',       caption:'Fast Food Pedro Style' },
-  { type:'image', src:'gallery/Fusion_Protocol_Tshirt.jpg',      caption:'Fusion Protocol T-Shirt' },
-  { type:'image', src:'gallery/Happy_Salad.jpg',                  caption:'Happy Salad' },
-  { type:'image', src:'gallery/Kefir_Grains.jpg',                 caption:'Kefir Grains' },
-  { type:'image', src:'gallery/Nuts_Overnight_Soak.jpg',         caption:'Nuts Overnight Soak' },
-  { type:'image', src:'gallery/Own_Collagen_Consumption.jpg',    caption:'Own Collagen Consumption' },
-  { type:'image', src:'gallery/Proteolytic_Enzime_Drink_Prep.jpg', caption:'Proteolytic Enzyme Drink Prep' },
-  { type:'image', src:'gallery/Seafish_Veggies_Time.jpg',        caption:'Seafish Veggies Time' },
-  { type:'image', src:'gallery/Seeds_Overnight_Soak.jpg',        caption:'Seeds Overnight Soak' },
-  { type:'image', src:'gallery/Vegetables_Salad_Happy_Hour.jpg', caption:'Vegetables Salad Happy Hour' },
-  { type:'image', src:'gallery/Veggie_Party.jpg',                 caption:'Veggie Party' },
-  { type:'image', src:'gallery/Weekday_Full_Stack.jpg',          caption:'Weekday Full Stack' },
-  // Add more — photos: {type:'image',src:'gallery/File.jpg',caption:'Caption'} | videos: {type:'video',src:'gallery/clip.mp4',poster:'gallery/thumbs/clip.jpg',caption:'...'} | YouTube: {type:'youtube',id:'VIDEO_ID',caption:'...'}
+  { type:'image', cat:'nutrition', src:'gallery/Cherry_Season.jpg',                 caption:'Cherry Season' },
+  { type:'image', cat:'exercise', src:'gallery/Cold_Plunge_Time.jpg',             caption:'Cold Plunge Time' },
+  { type:'image', cat:'exercise', src:'gallery/Cold_Plunge_in_the_Wild.jpg', caption:'Cold Plunge in the Wild' },
+  { type:'image', cat:'supplementation', src:'gallery/Collagen_Production.jpg',          caption:'Collagen Production' },
+  { type:'image', cat:'nutrition', src:'gallery/Daily_Going_Nuts.jpg',            caption:'Daily Going Nuts' },
+  { type:'image', cat:'exercise', src:'gallery/Daily_Pushups_in_the_Morning_Sun.jpg', caption:'Daily Pushups in the Morning Sun' },
+  { type:'image', cat:'nutrition', src:'gallery/Double_Kefir_Trouble.jpg',        caption:'Double Kefir Trouble' },
+  { type:'image', cat:'nutrition', src:'gallery/Fast_Food_Pedro_Style.jpg',       caption:'Fast Food Pedro Style' },
+  { type:'image', cat:'merch', src:'gallery/Fusion_Protocol_Tshirt.jpg',      caption:'Fusion Protocol T-Shirt' },
+  { type:'image', cat:'nutrition', src:'gallery/Happy_Salad.jpg',                  caption:'Happy Salad' },
+  { type:'image', cat:'nutrition', src:'gallery/Kefir_Grains.jpg',                 caption:'Kefir Grains' },
+  { type:'image', cat:'exercise', src:'gallery/Morning_Balance.jpg', caption:'Morning Balance' },
+  { type:'image', cat:'exercise', src:'gallery/Morning_Yoga.jpg', caption:'Morning Yoga' },
+  { type:'image', cat:'nutrition', src:'gallery/Nuts_Overnight_Soak.jpg',         caption:'Nuts Overnight Soak' },
+  { type:'image', cat:'supplementation', src:'gallery/Own_Collagen_Consumption.jpg',    caption:'Own Collagen Consumption' },
+  { type:'image', cat:'supplementation', src:'gallery/Proteolytic_Enzime_Drink_Prep.jpg', caption:'Proteolytic Enzyme Drink Prep' },
+  { type:'image', cat:'nutrition', src:'gallery/Seafish_Veggies_Time.jpg',        caption:'Seafish Veggies Time' },
+  { type:'image', cat:'nutrition', src:'gallery/Seeds_Overnight_Soak.jpg',        caption:'Seeds Overnight Soak' },
+  { type:'image', cat:'nutrition', src:'gallery/Vegetables_Salad_Happy_Hour.jpg', caption:'Vegetables Salad Happy Hour' },
+  { type:'image', cat:'nutrition', src:'gallery/Veggie_Party.jpg',                 caption:'Veggie Party' },
+  { type:'image', cat:'supplementation', src:'gallery/Weekday_Full_Stack.jpg',          caption:'Weekday Full Stack' },
+  // Add more — set cat to one of: nutrition | exercise | supplementation | merch
+  // photos: {type:'image',cat:'nutrition',src:'gallery/File.jpg',caption:'Caption'} | videos: {type:'video',cat:'exercise',src:'gallery/clip.mp4',poster:'gallery/thumbs/clip.jpg',caption:'...'} | YouTube: {type:'youtube',cat:'exercise',id:'VIDEO_ID',caption:'...'}
 ];
 
 /* ---- Rendering ---- */
@@ -220,10 +238,16 @@ function thumbFor(it){
   return it.src;
 }
 
-function render(filter){
-  view=GALLERY.filter(it=>filter==='all'||(filter==='photos'&&it.type==='image')||(filter==='videos'&&(it.type==='video'||it.type==='youtube')));
+let mainFilter='all',subFilter='all';
+function render(){
+  view=GALLERY.filter(it=>{
+    const isVideo=it.type==='video'||it.type==='youtube';
+    if(mainFilter==='videos')return isVideo;
+    if(mainFilter==='photos')return !isVideo&&(subFilter==='all'||it.cat===subFilter);
+    return true;
+  });
   grid.innerHTML='';
-  if(!GALLERY.length){empty.style.display='block';grid.style.display='none';return;}
+  if(!view.length){empty.style.display='block';grid.style.display='none';return;}
   empty.style.display='none';grid.style.display='grid';
   view.forEach((it,i)=>{
     const isVideo=it.type==='video'||it.type==='youtube';
@@ -267,13 +291,26 @@ document.addEventListener('keydown',e=>{
 });
 
 /* ---- Filters ---- */
+const subBar=document.getElementById('subFilters');
 document.querySelectorAll('.gfilter').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.gfilter').forEach(x=>x.classList.remove('active'));
   b.classList.add('active');
-  render(b.dataset.filter);
+  mainFilter=b.dataset.filter;
+  // reset sub-category selection whenever a main filter is chosen
+  subFilter='all';
+  document.querySelectorAll('.gsubfilter').forEach(x=>x.classList.toggle('active',x.dataset.sub==='all'));
+  subBar.style.display=mainFilter==='photos'?'flex':'none';
+  render();
 }));
 
-render('all');
+document.querySelectorAll('.gsubfilter').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.gsubfilter').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  subFilter=b.dataset.sub;
+  render();
+}));
+
+render();
 </script>
 </body>
 </html>
