@@ -36,8 +36,8 @@
   <line x1="600" y1="118" x2="600" y2="792" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
 
   <!-- title -->
-  <text x="600" y="62" text-anchor="middle" font-size="40" letter-spacing="2" filter="url(#glow)">
-    <tspan fill="#e0605e" font-weight="bold">ACIDIC</tspan><tspan fill="#d4af37" font-style="italic">  vs  </tspan><tspan fill="#5aa0e6" font-weight="bold">ALKALINE</tspan><tspan fill="#ece7df">  TERRAIN</tspan>
+  <text x="600" y="50" text-anchor="middle" font-size="40" letter-spacing="2" filter="url(#glow)">
+    <tspan text-anchor="end" x="560" fill="#e0605e" font-weight="bold">ACIDIC</tspan><tspan text-anchor="end" x="600" fill="#d4af37" font-style="italic">v</tspan><tspan text-anchor="start" x="600" fill="#d4af37" font-style="italic">s</tspan><tspan text-anchor="start" x="640" fill="#5aa0e6" font-weight="bold">ALKALINE</tspan><tspan text-anchor="middle" x="600" dy="46" fill="#ece7df">TERRAIN</tspan>
   </text>
 
   <!-- side man: red (left, acidic) -->
@@ -78,8 +78,8 @@
   <text x="600" y="546" text-anchor="middle" font-size="30" fill="#d4af37" font-style="italic">Your inner terrain decides the fate of every cell</text>
 
   <!-- left text column (acidic) -->
-  <text x="60" y="588" font-size="21" font-weight="bold" fill="#e0605e">An acidic terrain creates tired, sick cells</text>
-  <g font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#d8d2c8">
+  <text x="60" y="588" font-size="24" font-weight="bold" fill="#e0605e">An acidic terrain creates tired, sick cells</text>
+  <g font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#d8d2c8">
     <text x="66" y="622">&#8226;&#160;&#160;Low energy and fatigue</text>
     <text x="66" y="655">&#8226;&#160;&#160;Poor digestion</text>
     <text x="66" y="688">&#8226;&#160;&#160;Overweight</text>
@@ -89,8 +89,8 @@
   </g>
 
   <!-- right text column (alkaline) -->
-  <text x="640" y="588" font-size="21" font-weight="bold" fill="#5aa0e6">An alkaline terrain creates healthy, vital cells</text>
-  <g font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#d8d2c8">
+  <text x="640" y="588" font-size="24" font-weight="bold" fill="#5aa0e6">An alkaline terrain creates healthy, vital cells</text>
+  <g font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#d8d2c8">
     <text x="646" y="622">&#8226;&#160;&#160;A lean, trim body</text>
     <text x="646" y="655">&#8226;&#160;&#160;Energy and vitality</text>
     <text x="646" y="688">&#8226;&#160;&#160;Clear, bright eyes</text>
